@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="messageBean" class="sample03.MessageBeanKo" scope="prototype"><!-- MessageBean messageBean = new MessageBeanKo() 와 똑같다 이미 new 를 한것이다. id="빈=객체 넣기" class="클래스 이름" 꼭 경로를 풀로 넣어줘야 한다.-->
+	</bean>															<!--scope를 prototype로 설정하면 싱글톤이아니라 빈이 하나하나 생성된다.  -->
+																	<!-- 
+																	scope="prototype"
+																			"request"
+																			"session"
+																			"singleton"기본값
+																	 -->
+																	 
+	<context:component-scan base-package="sample04"/><!-- sample03안에 @anotation을 사용하고 있다고 설정해주는 것 -->																 
+	<context:component-scan base-package="sample05"/><!-- sample03안에 @anotation을 사용하고 있다고 설정해주는 것 -->																 
+</beans>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+			<!-- sample01 -->
+			<bean id="messageBeanImpl" class="sample01.MessageBeanImpl">
+				<constructor-arg><!-- 생성자  순서 마쳐서 써줘야 한다.-->
+					<value>딸기</value>
+				</constructor-arg>
+				<property name="cost"><!-- setter  setCost를 cost로 표현-->
+					<value>3500</value>
+				</property>
+				<property name="qty" value="2"><!-- setter setQty를 qty라고 이름 붙이고 value값을 준다 위의 것과 같은 것이다. -->
+				</property>
+			</bean>
+			
+			<!-- sample02 -->
+			
+			<bean id="calcAdd" class="sample02.CalcAdd">
+				<constructor-arg type="int" value="50"/>
+				<constructor-arg type="int" value="20"/>		
+			</bean>
+			
+			<bean id="calcMul" class="sample02.CalcMul">
+			
+				<property name="x" value="30"></property>
+				<property name="y" value="20"></property>
+			
+			</bean>
+			
+			<!-- sample03 -->
+			
+			<bean id="sungJukImpl" class="sample03.SungJukImpl">
+				<constructor-arg ref="sungJukDTO"/><!-- sungJukDTO의 값을 참조한다. 바로밑의 것을 참조한다고 보면된다.  -->
+			</bean>
+			
+			<bean id="sungJukDTO" class="sample03.SungJukDTO">
+				<property name="name" value="홍길동"></property><!-- setter메소드를 나타낸다. -->
+				<property name="kor" value="97"></property>
+				<property name="eng" value="100"></property>
+				<property name="math" value="95"></property>
+			</bean>
+																	 
+</beans>
+
+

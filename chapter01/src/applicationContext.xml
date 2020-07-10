@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="sample03"/><!-- sample03안에 @anotation을 사용하고 있다고 설정해주는 것 -->
+	
+	<!-- sample04 -->
+	<bean id="calcAdd" class="sample04.CalcAdd"></bean><!-- CalcAdd calcAdd = new CalcAdd() 와 똑같다 이미 new 를 한것이다. id="빈=객체 넣기" class="클래스 이름" 꼭 경로를 풀로 넣어줘야 한다.-->
+	<bean id="calcMul" class="sample04.CalcMul"><!-- CalcMul calcMul = new CalcMul() 와 똑같다 이미 new 를 한것이다. id="빈=객체 넣기" class="클래스 이름" 꼭 경로를 풀로 넣어줘야 한다.-->
+	</bean>	
+	
+	<!-- sample05 -->
+	<bean id="sungJukImpl" class="sample05.SungJukImpl"></bean>
+	
+</beans>
