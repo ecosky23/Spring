@@ -1,4 +1,4 @@
-package sample02;
+package sample03;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -9,12 +9,20 @@ public class HelloSpring {
 		
 	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
-	Calc calc;
-	calc = context.getBean("calcAdd", CalcAdd.class);
-	calc.calculate();
+	SungJuk sungJuk = context.getBean("sungJukImpl", SungJuk.class);
+
 	
-	calc = context.getBean("calcMul", CalcMul.class);
-	calc.calculate();
 	
+	sungJuk.calcTot();
+	sungJuk.calcAvg();
+	sungJuk.display();
+	
+	
+	
+	System.out.println("\n수정");
+	sungJuk.modify();
+	sungJuk.calcTot();
+	sungJuk.calcAvg();
+	sungJuk.display();
 	}
 }
