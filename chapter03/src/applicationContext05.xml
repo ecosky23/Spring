@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 핵심 클래스 new -->
+	<bean id="messageBeanImpl" class="sample05_RegExp.MessageBeanImpl"></bean>
+	
+	<bean id="loggingBeforeAdvice" class="sample05_RegExp.LoggingBeforeAdvice"></bean>
+	<bean id="loggingAfterAdvice" class="sample05_RegExp.LoggingAfterAdvice"></bean>
+	
+	<!-- methodPointcut과 beforeAdvisor합쳐서 Before값만 주기 -->
+	<bean id="beforeAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice" ref="loggingBeforeAdvice"></property>
+		<property name="patterns">
+			<list>
+				<value>^.*st.*|.*on$</value><!--시작:^ 끝:$ (.)아무거나 나와도된다. 시작을 st로 또는 끝을 on으로 끝나는 메소드 -->
+			</list>
+		</property>
+	</bean>
+	
+	<!-- methodPointcut과 beforeAdvisor합쳐서 After값만 주기 -->
+	<bean id="afterAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice" ref="loggingAfterAdvice"></property>
+		<property name="patterns">
+			<list>
+				<value>^.*st.*|.*on$</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean"><!-- aop 공통의 내용을 proxy를 통해 핵심클래스에 집어 넣는다. -->
+		<property name="target" ref="messageBeanImpl"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>beforeAdvisor</value>		
+				<value>afterAdvisor</value>		
+				 
+			</list>
+		</property>
+	</bean>
+	
+</beans>

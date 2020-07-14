@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="messageBeanImpl" class="sample01.MessageBeanImpl">
+		<property name="str" value="Have a nice day!!"/>
+	</bean>
+	<bean id="loggingAdvice" class="sample01.LoggingAdvice"></bean>
+	
+	<!-- AOP -->
+ 
+	<aop:config>
+		<!-- 핵심관심사항 -->
+		<aop:pointcut id="beforeMethod" expression="execution(public void sample01.MessageBeanImpl.*Before(..))" />
+		<!-- pointcut 누구한텐 집어늘 건지 정하는 것 id="특정한 이름 정해줌" expression="execution(public void(메소드 종류) sample01.MessageBeanImpl(메소드 위치).*Before(..)//(*:앞의 이름은 모르나 뒤의 이름은 Before로 시작된다.(..):자료형 들어와도 상관없다.))"-->
+		
+		<aop:pointcut id="afterMethod" expression="execution(public * *.*.*After(..))"/>
+		
+		<aop:pointcut id="aroundMethod" expression="execution(public * *.*.*Print(..))"/>
+		
+		<aop:aspect ref="loggingAdvice"><!-- aspect ref=""참조값을 정해준다. before method="" 어떠한 메소드를 넣어줄지 정한다. pointcut-ref=""어디에 넣어줄지 정한다.-->
+			<aop:before method="beforeTrace" pointcut-ref="beforeMethod"/><!-- pointcut-ref를 beforeMethod로 정해줘서 위의 pointcut에 넣어주게 된다. -->
+			<aop:after method="afterTrace" pointcut-ref="afterMethod"/>
+			<aop:around method="trace" pointcut-ref="aroundMethod"/>
+		</aop:aspect><!-- 공통관심사항 -->
+	</aop:config>
+	
+	
+	
+		
+</beans>
