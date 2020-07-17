@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- viewResolver 화면에 뿌려주는 것 -->
+	<bean id="" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!--<property name="prefix" value="/view/"></property> 모든 jsp 파일은 view에 넣겠다. -->
+		<property name="suffix" value=".jsp"></property><!-- 파일뒤에 .jsp 값을 자동으로 붙여주겠다. -->
+	</bean>
+	
+	<bean id="" class="com.controller.HelloController"></bean>
+
+</beans>
