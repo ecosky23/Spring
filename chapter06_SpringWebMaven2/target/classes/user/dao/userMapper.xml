@@ -27,4 +27,9 @@
  		
  		update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
  	</update>
+ 	
+ 	<select id="searchUserList" parameterType="user" resultType="user">
+ 		select * from usertable where ${searchOption} like '%'||#{searchText}||'%'
+ 	</select>
+ 	
  </mapper>

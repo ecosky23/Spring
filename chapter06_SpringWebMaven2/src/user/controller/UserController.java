@@ -109,7 +109,7 @@ public class UserController {
 	
 	@RequestMapping(value="/user/searchUser", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getUser(@RequestParam String id) {
+	public ModelAndView searchUser(@RequestParam String id) {
 		UserDTO userDTO = userService.searchUser(id);
 		
 		ModelAndView mav = new ModelAndView();
@@ -119,6 +119,24 @@ public class UserController {
 		return mav;
 	}
 	
+	/*
+	@RequestMapping(value="/user/searchUser", method=RequestMethod.POST)
+	@ResponseBody
+	public JSONObject searchUser(@RequestParam String id) {
+		UserDTO userDTO = userService.searchUser(id);
+		
+		JSONObject json = new JSONObject();
+		
+		if(userDTO != null){
+			json.put("name", userDTO.getName());
+			json.put("id", userDTO.getId());
+			json.put("pwd", userDTO.getPwd());
+			
+		}
+	
+		return json;
+	}
+	*/
 	
 	@RequestMapping(value="/user/getUserList", method=RequestMethod.POST)
 	@ResponseBody
@@ -134,9 +152,21 @@ public class UserController {
 	@RequestMapping(value="/user/modify", method=RequestMethod.POST)
 	@ResponseBody
 	public void modify(@ModelAttribute UserDTO userDTO){
-		System.out.println(userDTO.getId());
+		
 		userService.modify(userDTO);
 	}
 	
-	
+	@RequestMapping(value="/user/searchUserList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView searchUserList(@ModelAttribute UserDTO userDTO) {
+		
+		List<UserDTO> list = userService.searchUserList(userDTO);
+		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		return mav;
+		
+	}
 }

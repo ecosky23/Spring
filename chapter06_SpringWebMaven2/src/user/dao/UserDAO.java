@@ -19,6 +19,8 @@ public interface UserDAO {
 
 	public void modify(Map<String, String> map);
 
+	public List<UserDTO> searchUserList(UserDTO userDTO);
+
 	
 
 }

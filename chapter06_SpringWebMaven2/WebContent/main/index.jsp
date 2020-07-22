@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br><br>
 	************메인 화면************** <br><br>
 	1.<a href="/chapter06_SpringWebMaven2/user/writeForm">입력</a> <br>
 	2.<a href="/chapter06_SpringWebMaven2/user/list">출력</a> <br>

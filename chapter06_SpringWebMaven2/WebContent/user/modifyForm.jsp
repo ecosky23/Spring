@@ -13,7 +13,7 @@
 <input type="button" id="searchBtn" value="검색"><br>
 <div id="resultDiv"></div>
 <div id="modifyFormDiv">
-<form id="modifyForm">
+<form id="modifyForm" style="visibility: hidden">
 <table border="1">
  <tr>
    <td>이름</td> 
@@ -22,7 +22,7 @@
  </tr>
  <tr>
    <td>아이디</td> 
-   <td><input type="text" name="id" id="modifyId"></td>
+   <td><input type="text" name="id" id="modifyId" readonly></td>
    <div id="idDiv"></div>
  </tr>
  <tr>
@@ -31,7 +31,9 @@
    <div id="pwdDiv"></div>
  </tr>
  <tr>
- <td colspan="2"><input type="button" value="수정" id="modifyBtn"></td>
+ <td colspan="2" align="center"><input type="button" value="수정" id="modifyBtn">
+ <input type="reset" id="resetBtn" value="취소">
+ </td>
 </tr>
 </table>
 </form>
@@ -54,13 +56,15 @@ $('#searchBtn').click(function(){
 			success: function(data){
 				if(data.userDTO == null){
 					$('#resultDiv').text('찾는 아이디가 없습니다.').css('font-size','8pt').css('color','red');
+					$('#modifyForm').css('visibility','hidden');
 					return;
 				}
 				
 				
 				$('#modifyName').val(data.userDTO.name);
 				$('#modifyId').val(data.userDTO.id);
-				
+				$('#modifyPwd').val(data.userDTO.pwd);
+				$('#modifyForm').css('visibility','visible');
 				
 			}
 	
@@ -89,9 +93,18 @@ $('#modifyBtn').click(function(){
 			data:  $('#modifyForm').serialize(),
 			success: function(){
 				alert("수정 완료");
+				location.href='/chapter06_SpringWebMaven2/main/index'
+			},
+			error: function(err){
+				console.log(err);
 			}
 		});
 	}
+});
+
+
+$('#resetBtn').click(function(){
+	$('#searchBtn').trigger('click');
 });
 
 

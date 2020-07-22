@@ -45,5 +45,10 @@ public class UserDAOMybatis implements UserDAO {
 		
 		sqlSession.update("userSQL.modify", map);
 	}
+	@Override
+	public List<UserDTO> searchUserList(UserDTO userDTO) {
+		
+		return sqlSession.selectList("userSQL.searchUserList", userDTO);
+	}
 	
 }

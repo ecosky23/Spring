@@ -20,5 +20,7 @@ public interface UserService {
 	public UserDTO searchUser(String id);
 
 	public void modify(UserDTO userDTO);
+
+	public List<UserDTO> searchUserList(UserDTO userDTO);
 	
 }

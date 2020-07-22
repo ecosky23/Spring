@@ -62,4 +62,10 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public List<UserDTO> searchUserList(UserDTO userDTO) {
+		
+		return userDAO.searchUserList(userDTO);
+	}
+
 }
