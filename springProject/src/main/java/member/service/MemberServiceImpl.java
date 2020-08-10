@@ -44,6 +44,25 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getZipecodeList(map);
 	}
 
+	@Override
+	public void write(MemberDTO memberDTO) {
+		
+		memberDAO.write(memberDTO);
+		
+	}
+
+	@Override
+	public MemberDTO getMember(String id) {
+		
+		return memberDAO.checkId(id);
+	}
+
+	@Override
+	public void modify(MemberDTO memberDTO) {
+		memberDAO.modify(memberDTO);
+		
+	}
+
 	
 	
 

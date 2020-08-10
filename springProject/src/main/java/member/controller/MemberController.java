@@ -93,4 +93,31 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value="wrtie", method=RequestMethod.POST)
+	public String write(@ModelAttribute MemberDTO memberDTO, Model model) {
+		
+		memberService.write(memberDTO);
+		
+		model.addAttribute("display", "/member/write.jsp");
+		return "/main/index";
+	}
+	
+	@RequestMapping(value="modifyForm", method=RequestMethod.GET)
+	public String modifyForm(HttpSession session, Model model) {
+		String id = (String) session.getAttribute("memId");
+		MemberDTO memberDTO = memberService.getMember(id);
+				
+		model.addAttribute("memberDTO", memberDTO);
+		model.addAttribute("display", "/member/modifyForm.jsp");
+		return "/main/index";
+	}
+	@ResponseBody
+	@RequestMapping(value="modify", method=RequestMethod.POST)
+	public void modify(@ModelAttribute MemberDTO memberDTO) {
+		
+		memberService.modify(memberDTO);
+		
+	}
+	
+	
 }

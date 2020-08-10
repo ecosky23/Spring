@@ -6,5 +6,5 @@
 <input type="button" value="로그아웃" 
 onclick="location.href='/springProject/member/logout'"> &emsp;
 <input type="button" value="회원정보수정" 
-onclick="location.href=''">
+onclick="location.href='/springProject/member/modifyForm'">
 </center>

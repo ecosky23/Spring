@@ -9,7 +9,7 @@
 <title>회원가입</title>
 </head>
 <body>
-	<form name="writeForm" method="post" action="write.do">
+	<form name="writeForm" method="post" action="/springProject/member/write">
 		<h3>회원가입</h3>
 
 		<table border="1" cellspacing="0" cellpadding="3">

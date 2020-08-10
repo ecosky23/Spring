@@ -175,26 +175,47 @@ function checkPostClose(zipcode, address) {// checkPost에서 zipcode와 address
 }
 
 
-
-
-function checkModifyForm() {
-	// if(document.writeForm.name.value == ""){ 이름입력란의 name속성의 name를 뜻한다.
-	if (document.getElementById("name").value == "") {// 이름입력란의 id속성의 name을
-														// 뜻한다.
-		alert("이름을 입력하세요");
-		document.modifyForm.name.focus();// 이름창에 포커스 주기
-
-	} else if (document.modifyForm.pwd.value == "") {
-		alert("password를 입력하세요");
-		document.modifyForm.pwd.focus();
-
-	} else if (document.modifyForm.pwd.value != document.modifyForm.repwd.value) {
-		alert("password가 일치하지 않습니다.");
-
-	} else {
-
-		document.modifyForm.submit();
-	}
-}
+//회원정보수정
+$('#modifyBtn').click(function(){
+	$('#nameDiv').empty();
+	$('#pwdDiv').empty();
+	$('#repwdDiv').empty();
+	
+    if($('#name').val() == '') {
+        $('#nameDiv').text('이름을 입력하세요')
+        $('#nameDiv').css('color', 'red')
+        $('#nameDiv').css('font-size', '8pt')
+        $('#nameDiv').css('font-weight', 'bold')
+        $('#name').focus();
+        
+    } else if($('#pwd').val() == '') {
+    	$('#pwdDiv').text('비밀번호를 입력하세요')
+        $('#pwdDiv').css('color', 'red')
+        $('#pwdDiv').css('font-size', '8pt')
+        $('#pwdDiv').css('font-weight', 'bold')
+        $('#pwd').focus();
+        
+    } else if($('#pwd').val() != $('#repwd').val()){
+    	$('#repwdDiv').text('비밀번호가 일치하지 않습니다')
+        $('#repwdDiv').css('color', 'red')
+        $('#repwdDiv').css('font-size', '8pt')
+        $('#repwdDiv').css('font-weight', 'bold')
+        $('#repwd').focus();
+        
+    }else{
+    	$.ajax({
+    		type: 'post',
+    		url: '/springProject/member/modify',
+    		data: $('#modifyForm').serialize(),
+    		success: function(){
+    			alert('회원 정보 수정 완료');
+    			location.href='/springProject/main/index';
+    		},
+    		error: function(err){
+    			console.log(err);
+    		}
+    	});
+    } 
+ });
 
 

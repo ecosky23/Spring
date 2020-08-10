@@ -6,6 +6,6 @@
 <script type="text/javascript">
 window.onload=function(){//이창이 떴을때 자동으로 실행
 	alert("회원정보 수정완료");
-	location.href="/miniProject/main/index.do"
+	location.href="/springProject/main/index"
 }
 </script>

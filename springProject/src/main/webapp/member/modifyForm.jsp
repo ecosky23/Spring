@@ -2,28 +2,34 @@
     pageEncoding="UTF-8"%>
 
 <h3>회원정보 수정</h3>
-<form name="modifyForm" method="post" action="/miniProject/member/modify.do">
+<form id="modifyForm" name="modifyForm">
   <table border="1" cellspacing="0" cellpadding="3">
 
    <tr>
     <td width="100" align="center"><font color="red"> * </font> 이름 </td>
     <td>
-     <input type="text" name="name" id="name" value="${memberDTO.name }"></td>
+     <input type="text" name="name" id="name" value="${memberDTO.name }">
+      <div id="nameDiv"></div>
+     </td>
    </tr>
   
    <tr>
     <td align="center"><font color="red"> * </font> 아이디 </td>
-    <td><input type="text" size="25" name="id" value="${memberDTO.id }" readonly></td>
+    <td><input type="text" size="25" name="id" id="id" value="${memberDTO.id }" readonly></td>
    </tr>
    
    <tr> 
     <td align="center"><font color="red"> * </font> 비밀번호 </td>
-	<td> <input type="password" size="30" name="pwd" ></td>
+	<td> <input type="password" size="30" name="pwd" id="pwd">
+	<div id="pwdDiv"></div>
+	</td>
    </tr>
    
    <tr> 
     <td align="center"><font color="red"> * </font> 재확인 </td>
-	<td> <input type="password" size="30" name="repwd" ></td>
+	<td> <input type="password" size="30" name="repwd" id="repwd">
+	<div id="repwdDiv"></div>
+	</td>
    </tr>
 
    <tr> 
@@ -69,16 +75,17 @@
         
     <tr> 
     <td colspan="2" align="center">
-	<input type="button" onclick="checkModifyForm()" value="회원정보수정"> &emsp; 
+	<input type="button" id="modifyBtn" value="회원정보수정"> &emsp; 
 	<input type="reset" value="다시입력"> </td>
   </tr>
   </table>
 </form>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../js/member.js"></script>
 <script type="text/javascript">
 window.onload = function () {	
-  	document.modifyForm.gender[${memberDTO.gender }].checked = true; 	
+  	document.modifyForm.gender['${memberDTO.gender }'].checked = true; 	
 	document.getElementById("email2").value = "${memberDTO.email2 }";
 	document.getElementById("tel1").value = "${memberDTO.tel1 }";
 }   

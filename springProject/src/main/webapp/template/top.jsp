@@ -12,11 +12,11 @@ style="cursor:pointer;">Spring기반의 미니 프로젝트</h3>
 
 <c:if test="${memId != null }">
 	
-	<a href="../board/boardWriteForm.do">글쓰기</a>&emsp;
+	<a href="../board/boardWriteForm">글쓰기</a>&emsp;
 	<c:if test="${memId == 'admin'}">
-	<a href="../imageboard/imageboardWriteForm.do">이미지등록</a> &emsp;
+	<a href="../imageboard/imageboardWriteForm">이미지등록</a> &emsp;
 	</c:if>
 </c:if>
 
-<a href="../board/boardList.do?pg=1">목록</a>&emsp;
-<a href="../imageboard/imageboardList.do?pg=1">이미지목록</a> &emsp;
+<a href="../board/boardList">목록</a>&emsp;
+<a href="../imageboard/imageboardList?pg=1">이미지목록</a> &emsp;

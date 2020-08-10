@@ -16,6 +16,12 @@ public interface MemberService {
 
 	public List<ZipcodeDTO> getZipecodeList(Map<String, String> map);
 
+	public void write(MemberDTO memberDTO);
+
+	public MemberDTO getMember(String id);
+
+	public void modify(MemberDTO memberDTO);
+
 	
 
 }
